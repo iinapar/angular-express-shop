@@ -1,0 +1,14 @@
+.navbar {
+  background-color: #089373;
+  margin: 0.5rem 0rem 0rem 0rem;
+  padding: 0.5rem;
+  color: rgb(252, 248, 243);
+}
+
+.navbar a {
+  color: rgb(252, 248, 244);
+}
+
+i {
+  margin-left: 0.5rem;
+}

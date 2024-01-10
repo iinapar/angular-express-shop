@@ -1,0 +1,53 @@
+<div *ngIf="product">
+  <div class="container">
+    <form #f="ngForm" (ngSubmit)="onSubmit()">
+      <h3>Muokkaa tuotetietoja</h3>
+      <div class="form-group">
+        <label for="name">Tuotenimi:</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Kirjoita tuotenimi" [(ngModel)]="product.name" required ngModel />
+        <div class="invalid" [hidden]="!f.form.hasError('required', 'name')">Kirjoita tuotetunnus</div>
+        <label for="shortDescription">Lyhyt kuvaus:</label>
+        <textarea
+          class="form-control"
+          rows="3"
+          name="shortDescription"
+          placeholder="Kirjoita tuotekuvaus"
+          [(ngModel)]="product.shortDescription"
+          required
+          ngModel
+        ></textarea>
+        <label for="description">Kuvaus:</label>
+        <textarea
+          class="form-control"
+          rows="3"
+          name="description"
+          placeholder="Kirjoita tuotekuvaus"
+          [(ngModel)]="product.description"
+          required
+          ngModel
+        ></textarea>
+        <div class="invalid" [hidden]="!f.form.hasError('required', 'description')">Kirjoita tuotekuvaus</div>
+        <label for="category">Kategoria:</label>
+        <input type="text" class="form-control" name="category" [(ngModel)]="product.category" required ngModel />
+        <div class="invalid" [hidden]="!f.form.hasError('required', 'category')">Lisää kategoria</div>
+        <label for="img">Tuotekuvan url:</label>
+        <input type="text" class="form-control" name="img" [(ngModel)]="product.img" required ngModel />
+        <div class="invalid" [hidden]="!f.form.hasError('required', 'img')">Lisää tuotekuvan url</div>
+        <div class="row col-md-4">
+          <div class="col">
+            <label for="price">Hinta:</label>
+            <input type="number" class="form-control numinput" name="price" [(ngModel)]="product.price" ngModel min="0" />
+            <div class="invalid" [hidden]="product.price > 0">Tarkista hinta</div>
+          </div>
+          <div class="col">
+            <label for="available">Kappalemäärä:</label>
+            <input type="number" class="form-control numinput" name="available" [(ngModel)]="product.available" required ngModel min="0" />
+            <div class="invalid" [hidden]="!f.form.hasError('required', 'available')">Lisää tuotteen kappalemäärä</div>
+          </div>
+        </div>
+        <button type="submit" (click)="save()" [disabled]="f.invalid" class="btn mt-3">Tallenna muutokset</button>
+        <div *ngIf="succeed" class="alert alert-success p-3 m-3 text-center">Muutokset tallennettu</div>
+      </div>
+    </form>
+  </div>
+</div>

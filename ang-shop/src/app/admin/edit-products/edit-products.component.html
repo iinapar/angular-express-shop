@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-center p-3">
+  <button routerLink="/add" class="btn mt-2">Lisää uusi tuote <i class="fa-solid fa-plus"></i></button>
+</div>
+<div class="container">
+  <h3 class="p-2">Tuotteet</h3>
+  <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+    <div *ngFor="let product of products" class="productlist">
+      <div class="card m-2">
+        <div class="text-center">
+          <img src="{{ product.img }}" class="card-img-top" alt="Tuotekuva" />
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p>
+            <b>{{ product.price }}€</b>
+          </p>
+          <p class="card-text">{{ product.shortDescription }}</p>
+          <div class="text-center m-2">
+            <!-- Button to Open the Editing Modal -->
+            <button type="button" class="btn" (click)="productId(product._id)" data-bs-toggle="modal" data-bs-target="#editModal">
+              Muokkaa <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+          </div>
+          <!-- Button to open the Delete modal -->
+          <div class="text-center m-2">
+            <button type="button" class="btn btn-delete" (click)="productId(product._id)" data-bs-toggle="modal" data-bs-target="#deleteModal">
+              Poista tuote<i class="fa-regular fa-trash-can"></i>
+            </button>
+          </div>
+          <!-- The Delete Modal -->
+          <div class="modal text-center" id="deleteModal">
+            <div class="modal-dialog modal-md">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <i class="fa-solid fa-circle-exclamation fa-xl" style="color: red"></i>
+
+                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                  Oletko varma, että haluat poistaa tuotteen?
+                  <div class="d-flex justify-content-center m-4">
+                    <button type="button" class="btn btn-delete m-2" (click)="delete()" data-bs-dismiss="modal">Poista tuote</button>
+                    <button type="button" class="btn m-2" (click)="close()" data-bs-dismiss="modal">Peruuta</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- The Modal ends-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- The Editing Modal -->
+<div class="modal" id="editModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <app-product-details *ngIf="selectedProductId" [productId]="selectedProductId"></app-product-details>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn button2" (click)="close()" data-bs-dismiss="modal">Sulje</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+.card:hover {
+  box-shadow: #279178c0 1px 1px 10px;
+}
+
+.btn {
+  align-items: center;
+  background-color: #73e3c9;
+}
+
+.button2 {
+  background-color: #089373;
+  color: #f4fffd;
+}
+
+.container {
+  background-color: #ffffff;
+}
+
+img {
+  max-height: 12rem;
+  min-height: 12rem;
+  max-width: 20rem;
+}
+
+.card {
+  min-width: 13rem;
+  min-height: 27rem;
+  padding: 0.5rem;
+  box-shadow: rgb(237, 236, 236) 5px 5px 5px;
+}

@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-md navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="">ANG-KAUPPA</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <!-- Routerlinkki kaikille tuotteille -->
+          <a class="nav-link" routerLink="">Kaikki tuotteet</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="categories/saippua">Saippuat</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="categories/kylpypommi">Kylpypommit</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav">
+        <!-- Jos ollaan kirjauduttu sisään näytetään Tuotteiden hallinta-linkki-->
+        <li *ngIf="login" class="nav-item">
+          <a class="nav-link" routerLink="/admin"><span class="d-md-none d-lg-inline">Tuotteiden hallinta</span><i class="fa-solid fa-pencil"></i></a>
+        </li>
+        <!-- Jos ei olla kirjauduttu sisään näytetään Luo tunnus- linkki, sisäänkirjautuneena Oma profiili-linkki -->
+        <li *ngIf="!login">
+          <a class="nav-link" routerLink="/newprofile"><span class="d-md-none d-lg-inline">Luo tunnus</span><i class="fas fa-user"></i></a>
+        </li>
+        <li *ngIf="login" class="nav-item">
+          <a class="nav-link" href="/profile" role="button"><span class="d-md-none d-lg-inline">Oma profiili</span><i class="fas fa-user"></i></a>
+        </li>
+
+        <!-- Jos ei olla kirjauduttu sisään näytetään Kirjaudu sisään- linkki, sisäänkirjautuneena Kirjaudu ulos-linkki -->
+        <li *ngIf="!login" class="nav-item">
+          <a class="nav-link" routerLink="/login"><span class="d-md-none d-lg-inline">Kirjaudu sisään</span><i class="fa-solid fa-right-to-bracket"></i></a>
+        </li>
+        <li *ngIf="login" class="nav-item">
+          <a class="nav-link" routerLink="/login" (click)="doLogout()"
+            ><span class="d-md-none d-lg-inline">Kirjaudu ulos</span><i class="fa-solid fa-person-walking-arrow-right"></i
+          ></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

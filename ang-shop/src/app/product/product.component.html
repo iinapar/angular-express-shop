@@ -1,0 +1,19 @@
+<div *ngIf="product">
+  <div class="mb-3">
+    <h2>{{ product.name }}</h2>
+  </div>
+  <div class="row row-cols-md-2">
+    <div>
+      <img src="{{ product.img }}" class="card-img-top" alt="Tuotekuva" />
+    </div>
+    <div class="row">
+      <div>
+        <p>
+          <b>{{ product.shortDescription }}</b>
+        </p>
+        <p>{{ product.description }}</p>
+        <p>Saatavilla: {{ product.available }} kpl</p>
+      </div>
+    </div>
+  </div>
+</div>

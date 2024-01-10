@@ -1,0 +1,59 @@
+<div class="d-flex justify-content-center">
+  <div class="card">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+      <div class="form-group">
+        <h3 class="pb-3">Uusi profiili</h3>
+        <h5 class="pb-1">Henkilötiedot</h5>
+        <div class="row">
+          <div class="col">
+            <!-- Etunimi input -->
+            <label for="firstname">Etunimi:</label>
+            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Kirjoita etunimi" #firstname="ngModel" required ngModel />
+            <div class="invalid" [hidden]="!f.form.hasError('required', 'firstname') || firstname.pristine">Etunimi on pakollinen</div>
+          </div>
+          <div class="col">
+            <!-- Sukunimi input -->
+            <label for="lastname">Sukunimi:</label>
+            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Kirjoita sukunimi" #lastname="ngModel" required ngModel />
+            <div class="invalid" [hidden]="!f.form.hasError('required', 'lastname') || lastname.pristine">Sukunimi on pakollinen</div>
+          </div>
+        </div>
+        <!-- Sähköposti input -->
+        <label for="email">Sähköposti:</label>
+        <input type="text" class="form-control" id="email" name="email" placeholder="Kirjoita sähköposti" #email="ngModel" required ngModel />
+        <div class="invalid" [hidden]="!f.form.hasError('required', 'email') || email.pristine">Sähköposti on pakollinen</div>
+
+        <!-- Kotiosoite input -->
+        <label for="street">Osoite:</label>
+        <input type="text" class="form-control" id="street" name="street" placeholder="Kirjoita osoite" #street="ngModel" required ngModel />
+        <div class="invalid" [hidden]="!f.form.hasError('required', 'street') || street.pristine">Osoite on pakollinen</div>
+        <div class="row">
+          <div class="col">
+            <!-- Kaupunki input -->
+            <label for="city">Kaupunki:</label>
+            <input type="text" class="form-control" id="city" name="city" placeholder="Kirjoita kaupunki" #city="ngModel" required ngModel />
+            <div class="invalid" [hidden]="!f.form.hasError('required', 'city') || city.pristine">Kaupunki on pakollinen</div>
+          </div>
+          <div class="col">
+            <!-- Postikoodi input -->
+            <label for="zip">Postikoodi:</label>
+            <input type="text" class="form-control" id="zip" name="zip" placeholder="Kirjoita postikoodi" #zip="ngModel" required ngModel />
+            <div class="invalid" [hidden]="!f.form.hasError('required', 'zip') || zip.pristine">Postikoodi on pakollinen</div>
+          </div>
+        </div>
+        <h5 class="pb-1">Profiilitiedot</h5>
+        <!-- Käyttäjätunnus input -->
+        <label for="username">Käyttäjätunnus:</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Kirjoita käyttäjätunnus" #username="ngModel" required ngModel />
+        <div class="invalid" [hidden]="!f.form.hasError('required', 'username') || username.pristine">Käyttäjätunnus on pakollinen</div>
+        <!-- Salasana input -->
+        <label for="password">Salasana:</label>
+        <input type="text" class="form-control" id="password" name="password" placeholder="Kirjoita salasana" #password="ngModel" required ngModel />
+        <div class="invalid" [hidden]="!f.form.hasError('required', 'password') || password.pristine">Salasana on pakollinen</div>
+
+        <button type="submit" [disabled]="f.invalid" class="btn btn-dark mt-3">Luo profiili</button>
+        <div *ngIf="succeed" class="alert alert-success p-3 m-3 text-center">Uusi profiili luotu onnistuneesti</div>
+      </div>
+    </form>
+  </div>
+</div>

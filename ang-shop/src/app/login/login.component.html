@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-center p-3">
+  <div>
+    <div class="card">
+      <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+        <div class="form-group">
+          <h2 class="text-center">Kirjaudu sisään</h2>
+          <label for="tunnus">Käyttäjätunnus:</label>
+          <div [ngClass]="{ 'was-validated': f.invalid && !tunnus.pristine }">
+            <input type="text" class="form-control" id="tunnus" name="tunnus" placeholder="Kirjoita käyttäjätunnus" #tunnus="ngModel" required ngModel />
+          </div>
+          <div class="invalid" [hidden]="!f.form.hasError('required', 'tunnus') || tunnus.pristine">Kirjoita käyttäjätunnus</div>
+          <label for="salasana">Salasana:</label>
+          <div [ngClass]="{ 'was-validated': f.invalid && !salasana.pristine }">
+            <input type="password" class="form-control" id="salasana" placeholder="Kirjoita salasana" name="salasana" #salasana="ngModel" required ngModel />
+          </div>
+          <div class="invalid" [hidden]="!f.form.hasError('required', 'salasana') || salasana.pristine">Kirjoita salasana</div>
+          <div class="text-center m-3">
+            <button type="submit" [disabled]="f.invalid" class="btn btn-success mt-2">Kirjaudu sisään</button>
+          </div>
+        </div>
+        <div *ngIf="error" class="alert alert-danger p-3 m-3 text-center">{{ error }}</div>
+      </form>
+    </div>
+  </div>
+</div>

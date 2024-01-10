@@ -1,0 +1,28 @@
+.invalid {
+  color: red;
+  font-size: small;
+}
+
+input {
+  max-width: 50rem;
+  min-width: 25rem;
+  margin-bottom: 1rem;
+  margin-top: 0.25rem;
+}
+
+.card {
+  max-width: 35rem;
+  margin: 2rem;
+  padding: 2rem;
+  box-shadow: 5px 5px 5px rgb(213, 213, 213);
+}
+
+.btn {
+  align-items: center;
+  background-color: #73e3c9;
+}
+
+.button2 {
+  background-color: #089373;
+  color: #f4fffd;
+}

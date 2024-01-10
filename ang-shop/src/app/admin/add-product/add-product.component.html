@@ -1,0 +1,57 @@
+<div class="d-flex justify-content-center p-3">
+  <div class="card">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+      <h3 class="mb-3 mt-3">Uusi tuote</h3>
+      <div class="form-group">
+        <!-- Input tuotteen nimelle -->
+        <label for="name">Tuotenimi:</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Kirjoita tuotenimi" #name="ngModel" required ngModel />
+        <div class="invalid" [hidden]="!f.form.hasError('required', 'name') || name.pristine">Kirjoita tuotenimi</div>
+        <!-- Input tuotteen lyhyelle kuvaukselle -->
+        <label for="shortDescription">Lyhyt kuvaus:</label>
+        <textarea
+          class="form-control"
+          rows="3"
+          name="shortDescription"
+          placeholder="Kirjoita tuotekuvaus"
+          #shortDescription="ngModel"
+          required
+          ngModel
+        ></textarea>
+        <div class="invalid" [hidden]="!f.form.hasError('required', 'shortDescription') || shortDescription.pristine">Kirjoita lyhyt tuotekuvaus</div>
+        <!-- Input tuotteen kuvaukselle -->
+        <label for="description">Kuvaus:</label>
+        <textarea class="form-control" rows="3" name="description" placeholder="Kirjoita tuotekuvaus" #description="ngModel" required ngModel></textarea>
+        <div class="invalid" [hidden]="!f.form.hasError('required', 'description') || description.pristine">Kirjoita tuotekuvaus</div>
+        <!-- Input tuotteen kategorialle -->
+        <label for="category">Kategoria:</label>
+        <input type="text" class="form-control" placeholder="Lisää kategoria" name="category" #category="ngModel" required ngModel />
+        <div class="invalid" [hidden]="!f.form.hasError('required', 'category') || category.pristine">Lisää kategoria</div>
+        <!-- Input tuotteen kuva-urlin lisäämiselle -->
+        <label for="img">Kuvan url:</label>
+        <input type="text" class="form-control" placeholder="Lisää tuotekuvan url" name="img" #img="ngModel" required ngModel />
+        <div class="invalid" [hidden]="!f.form.hasError('required', 'img') || img.pristine">Lisää tuotekuvan url</div>
+        <div class="row col-md-4">
+          <div class="col">
+            <!-- Input tuotteen hinalle -->
+            <label for="price">Hinta:</label>
+            <input type="number" class="form-control numinput" placeholder="€" name="price" #price="ngModel" ngModel min="0" />
+            <div class="invalid" [hidden]="price.value > 0 || price.pristine">Tarkista hinta</div>
+          </div>
+          <div class="col">
+            <!-- Input tuotteen saatavilla olevalle kappalemäärälle -->
+            <label for="available">Kappalemäärä:</label>
+            <input type="number" class="form-control numinput" name="available" #available="ngModel" placeholder="kpl" required ngModel min="0" />
+            <div class="invalid" [hidden]="!f.form.hasError('required', 'available') || available.pristine">Lisää tuotteen kappalemäärä</div>
+          </div>
+        </div>
+        <!-- Painike uuden tuotteen lisäämiselle -->
+        <button type="submit" [disabled]="f.invalid" class="btn m-3">Lisää tuote</button>
+        <!-- Painike tapahtuman peruuttamiselle. Palauttaa takaisin admin sivustolle. -->
+        <button type="submit" [routerLink]="['/admin']" routerLinkActive="router-link-active" class="btn m-3">Peruuta</button>
+        <!-- Tuotteen lisäämisen jälkeen näytetään Tuote lisätty onnistuneesti-palkki -->
+        <div *ngIf="succeed" class="alert alert-success p-3 m-3 text-center">Tuote lisätty onnistuneesti</div>
+      </div>
+    </form>
+  </div>
+</div>
